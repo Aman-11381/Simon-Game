@@ -45,22 +45,24 @@ $(document).click(function(event) {
 function nextSequence() {
 
   // generate a random number between 0,1,2,3
-  var randomNumber = Math.floor(Math.random() * 3 + 1)
+  if(userClickedPattern.length === gamePattern.length){
+    var randomNumber = Math.floor(Math.random() * 3 + 1)
 
-  randomChosenColour = buttonColours[randomNumber];
-  // adding the random chosen color to the game pattern
-  gamePattern.push(randomChosenColour);
+    randomChosenColour = buttonColours[randomNumber];
+    // adding the random chosen color to the game pattern
+    gamePattern.push(randomChosenColour);
 
-  $("#level-title").html("Level " + level);
+    $("#level-title").html("Level " + level);
 
-  // flash effect using jquery
-  $("#" + randomChosenColour).fadeOut(200).fadeIn(200);
-  playSound(randomChosenColour);
-  level++;
+    // flash effect using jquery
+    $("#" + randomChosenColour).fadeOut(200).fadeIn(200);
+    playSound(randomChosenColour);
+    level++;
 
-  //resetting user clicked pattern after each level
-  userClickedPattern = [];
-  index = 0;
+    //resetting user clicked pattern after each level
+    userClickedPattern = [];
+    index = 0;
+  }
 }
 
 // function to play sounds of buttons and game over
